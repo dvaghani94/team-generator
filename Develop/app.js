@@ -13,18 +13,14 @@ const render = require("./lib/htmlRenderer");
 const members = [];
 const idArray = [];
 
+function team() {
+
 function creatManager() {
     inquirer.prompt([
         {
             type: 'input',
             name: 'managerName',
             message: "What is the manager's name?",
-            validate: answer => {
-                if (answer !== "") {
-                    return true;
-                }
-            return "Please enter at least one character.";
-            }
         },
         {
                 type: "input",
@@ -41,7 +37,10 @@ function creatManager() {
             name: 'managerOfficePhone',
             message: "What is the manager's office phone number?",
         }
-    ])
+    ]).then(repsonse => {
+        const manager = new Manager(response.managerName, response.managerID, response.managerEmail, response.managerOfficePhone)
+        team.push.manager; 
+    })
 }
 
 function createEngineer() {
@@ -112,6 +111,8 @@ function createIntern() {
             message: "What is the intern's school?",
         },
     ])
+}
+
 }
 
 
