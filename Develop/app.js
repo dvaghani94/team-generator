@@ -28,13 +28,92 @@ function creatManager() {
         },
         {
                 type: "input",
-                name: "managerID",
-                message: "What is the manager's Id?",
-                validate: 
+                name: 'managerID',
+                message: "What is the manager's Id?", 
+        },
+        {
+            type: 'input',
+            name: 'managerEmail',
+            message: "What is the manager's email?",
+        },
+        {
+            type: 'input',
+            name: 'managerOfficePhone',
+            message: "What is the manager's office phone number?",
         }
-        
     ])
 }
+
+function createEngineer() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'engineerName',
+            message: "What is the engineer's name?",
+        },
+        {
+            type: 'input',
+            name: 'engineerID',
+            message: "What is the engineer's Id?",
+        },
+        {
+            type: 'input',
+            name: 'engineerEmail',
+            message: "What is the engineer's email?",
+        },
+        {
+            type: 'input',
+            name: 'engineerGithub',
+            message: "What is the engineer's github?"
+        }
+    ])
+}
+
+function createEmployee() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'employeeName',
+            message: "What is the employee's name?",
+        },
+        {
+            type: 'input',
+            name: 'employeeID',
+            message: "What is the employee's Id?",
+        },
+        {
+            type: 'input',
+            name: 'employeeEmail',
+            message: "What is the employee's email?",
+        },
+    ])
+}
+
+function createIntern() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'internName',
+            message: "What is the intern's name?",
+        },
+        {
+            type: 'input',
+            name: 'internID',
+            message: "What is the intern's Id?",
+        },
+        {
+            type: 'input',
+            name: 'internEmail',
+            message: "What is the intern's email?",
+        },
+        {
+            type: 'input',
+            name: 'internSchool',
+            message: "What is the intern's school?",
+        },
+    ])
+}
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
