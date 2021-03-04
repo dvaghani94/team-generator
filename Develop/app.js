@@ -15,7 +15,7 @@ const idArray = [];
 
 function team() {
 
-function creatManager() {
+function createManager() {
     inquirer.prompt([
         {
             type: 'input',
@@ -39,7 +39,7 @@ function creatManager() {
         }
     ]).then(repsonse => {
         const manager = new Manager(response.managerName, response.managerID, response.managerEmail, response.managerOfficePhone)
-        team.push.manager; 
+        members.push(manager); 
     })
 }
 
@@ -65,7 +65,10 @@ function createEngineer() {
             name: 'engineerGithub',
             message: "What is the engineer's github?"
         }
-    ])
+    ]).then(repsonse => {
+        const engineer = new Manager(response.engineerName, response.engineerID, response.engineerEmail, response.engineerGithub)
+        members.push(engineer); 
+    })
 }
 
 function createEmployee() {
@@ -85,7 +88,10 @@ function createEmployee() {
             name: 'employeeEmail',
             message: "What is the employee's email?",
         },
-    ])
+    ]).then(repsonse => {
+        const employee = new Manager(response.employeeName, response.employeeID, response.employeeEmail)
+        members.push(employee); 
+    })
 }
 
 function createIntern() {
@@ -110,10 +116,42 @@ function createIntern() {
             name: 'internSchool',
             message: "What is the intern's school?",
         },
-    ])
+    ]).then(repsonse => {
+        const intern = new Manager(response.internName, response.internID, response.internEmail, response.internSchool)
+        members.push(intern); 
+    })
+}
+
+function newMember() {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'newEmployee',
+            message: "Which type of member would you like to add?",
+            choices: ['Intern', 'Employee', 'Engineer', 'Manager', 'Done'],
+        },
+    ]).then(response => {
+        const teamMembers = response.newEmployee;
+        if (teamMembers == 'Intern') {
+            createIntern();
+        } else if (teamMembers == 'Employee') {
+            createEmployee();
+        } else if (teamMembers == 'Engineer') {
+            createEngineer();
+        } else if (teamMembers == 'Manager') {
+            createManager();
+        } else if (teamMembers == 'Done') {
+            writeToFile
+        }
+    });
+}
+function writeToFile() {
+    return fs.writeFileSync(outputPath, render(members));
 }
 
 }
+
+team();
 
 
 // Write code to use inquirer to gather information about the development team members,
