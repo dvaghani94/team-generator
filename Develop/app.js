@@ -141,7 +141,7 @@ function newMember() {
         } else if (teamMembers == 'Manager') {
             createManager();
         } else if (teamMembers == 'Done') {
-            writeToFile
+            writeToFile()
         }
     });
 }
