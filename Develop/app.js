@@ -5,6 +5,12 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+// var __dirname = 'output';
+
+// if (!fs.existsSync(__dirname)){
+//     fs.mkdirSync(__dirname);
+// }
+
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
@@ -126,7 +132,7 @@ function newMember() {
     newMember()
 }
 function writeToFile() {
-    return fs.writeFileSync(outputPath, render(members));
+    fs.writeFileSync(outputPath, render(members), 'utf-8');
 
 }
 
