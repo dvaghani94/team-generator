@@ -37,9 +37,10 @@ function createManager() {
             name: 'managerOfficePhone',
             message: "What is the manager's office phone number?",
         }
-    ]).then(repsonse => {
+    ]).then(response => {
         const manager = new Manager(response.managerName, response.managerID, response.managerEmail, response.managerOfficePhone)
         members.push(manager); 
+        newMember();
     })
 }
 
@@ -65,9 +66,10 @@ function createEngineer() {
             name: 'engineerGithub',
             message: "What is the engineer's github?"
         }
-    ]).then(repsonse => {
+    ]).then(response => {
         const engineer = new Manager(response.engineerName, response.engineerID, response.engineerEmail, response.engineerGithub)
         members.push(engineer); 
+        newMember();
     })
 }
 
@@ -88,9 +90,10 @@ function createEmployee() {
             name: 'employeeEmail',
             message: "What is the employee's email?",
         },
-    ]).then(repsonse => {
+    ]).then(response => {
         const employee = new Manager(response.employeeName, response.employeeID, response.employeeEmail)
         members.push(employee); 
+        newMember();
     })
 }
 
@@ -116,9 +119,10 @@ function createIntern() {
             name: 'internSchool',
             message: "What is the intern's school?",
         },
-    ]).then(repsonse => {
+    ]).then(response => {
         const intern = new Manager(response.internName, response.internID, response.internEmail, response.internSchool)
         members.push(intern); 
+        newMember();
     })
 }
 
@@ -127,7 +131,7 @@ function newMember() {
         {
             type: 'list',
             name: 'newEmployee',
-            message: "Which type of member would you like to add?",
+            message: "Which type of member would you like to add to your team?",
             choices: ['Intern', 'Employee', 'Engineer', 'Manager', 'Done'],
         },
     ]).then(response => {
@@ -145,9 +149,10 @@ function newMember() {
         }
     });
 }
+    newMember()
+}
 function writeToFile() {
     return fs.writeFileSync(outputPath, render(members));
-}
 
 }
 
