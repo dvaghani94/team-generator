@@ -67,32 +67,8 @@ function createEngineer() {
             message: "What is the engineer's github?"
         }
     ]).then(response => {
-        const engineer = new Manager(response.engineerName, response.engineerID, response.engineerEmail, response.engineerGithub)
+        const engineer = new Engineer(response.engineerName, response.engineerID, response.engineerEmail, response.engineerGithub)
         members.push(engineer); 
-        newMember();
-    })
-}
-
-function createEmployee() {
-    inquirer.prompt([
-        {
-            type: 'input',
-            name: 'employeeName',
-            message: "What is the employee's name?",
-        },
-        {
-            type: 'input',
-            name: 'employeeID',
-            message: "What is the employee's Id?",
-        },
-        {
-            type: 'input',
-            name: 'employeeEmail',
-            message: "What is the employee's email?",
-        },
-    ]).then(response => {
-        const employee = new Manager(response.employeeName, response.employeeID, response.employeeEmail)
-        members.push(employee); 
         newMember();
     })
 }
@@ -120,7 +96,7 @@ function createIntern() {
             message: "What is the intern's school?",
         },
     ]).then(response => {
-        const intern = new Manager(response.internName, response.internID, response.internEmail, response.internSchool)
+        const intern = new Intern(response.internName, response.internID, response.internEmail, response.internSchool)
         members.push(intern); 
         newMember();
     })
@@ -132,14 +108,12 @@ function newMember() {
             type: 'list',
             name: 'newEmployee',
             message: "Which type of member would you like to add to your team?",
-            choices: ['Intern', 'Employee', 'Engineer', 'Manager', 'Done'],
+            choices: ['Intern', 'Engineer', 'Manager', 'Done'],
         },
     ]).then(response => {
         const teamMembers = response.newEmployee;
         if (teamMembers == 'Intern') {
             createIntern();
-        } else if (teamMembers == 'Employee') {
-            createEmployee();
         } else if (teamMembers == 'Engineer') {
             createEngineer();
         } else if (teamMembers == 'Manager') {
